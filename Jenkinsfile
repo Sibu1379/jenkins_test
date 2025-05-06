@@ -1,5 +1,7 @@
 pipeline {
-    agent any 
+    agent {
+        label 'windows'
+          } 
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "MVN 3.9.9"
@@ -15,7 +17,7 @@ pipeline {
         
         stage('Build') {
             steps {
-                sh "mvn -Dmaven.test.failure.ignore=true -f api-gateway/ clean package"
+                bat "mvn -Dmaven.test.failure.ignore=true -f api-gateway/ clean package"
             }
                             
         }
