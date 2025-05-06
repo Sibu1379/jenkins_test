@@ -1,8 +1,5 @@
 pipeline {
-    agent {
-        label 'linux'
-    }
-
+    agent any 
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "MVN 3.9.9"
@@ -36,6 +33,9 @@ pipeline {
         }
 
         stage('Test Build') {
+            agent {
+        label 'linux'
+                }
             steps {
                 sh "echo Testing of new build" 
             }
